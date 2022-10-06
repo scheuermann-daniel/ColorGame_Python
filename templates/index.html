@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="UTF-8" content="width=device-width, initial-scale=1">
+        <title>Color Game</title>
+        <link rel="stylesheet" href="custom.css" type="text/css">
+    </head>
+
+    <style>
+        html {
+            overflow: hidden;
+        }
+
+        .mode {
+            margin-left: 10em
+        }
+
+        body {
+            background: #333b47;
+            margin:0;
+        }
+
+        #boxArea p {
+            background-color: #fff;
+            text-align: center;
+            border: 1px solid gray;
+            padding-top: 2px;
+        }
+
+        footer {
+            position: fixed;
+            top: 90%;
+            color: white;
+            width: 100%;
+            text-align: center
+        }
+
+        div p {
+            margin: 45%
+        }
+
+        #headerAndColor {
+            width:100%;
+            height:25vh;
+            background: #2766cc;
+            padding-top:.5vh;
+            padding-bottom:1vh;
+        }
+
+        #midBar {
+            width:100%;
+            height:1.5em;
+            background: white;
+            margin:0;
+            padding: 0 0 6px 0;
+        }
+
+        .welcome {
+            width: 80%;
+            text-align:center;
+            font-size:200%;
+            color:white;
+            margin: auto;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #guessThis {
+            text-align:center;
+            font-size:300%;
+            color:white;
+            font-weight:500;
+            margin: 7vh 0 0 0;
+        }
+
+        #tools {
+            display:flex;
+            width:50%;
+            margin:auto;
+            height:100%;
+            justify-content: space-between;
+        }
+
+        .toolDesign {
+            font-size:125%;
+            align-self:center;
+            margin: 0 auto 0 auto;
+            color: #2766cc;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight:bold;
+            height: 100%;
+            padding: 0
+        }
+
+        #boxArea {
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+            "box1 box2 box3"
+            "box4 box5 box6";
+            height:55vh;
+            width:45vw;
+            margin:auto;
+            margin-top:4vh;
+            margin-bottom:1vh;
+            row-gap:3%;
+            column-gap:2%;
+        }
+
+        #box1 {
+            background:rgb{{box1}};
+            grid-area: box1;
+            border-radius: 50px;
+            display: {{display1}};
+            border: 2px solid gray;
+        }
+
+        #box2 {
+            background:rgb{{box2}};
+            grid-area: box2;
+            border-radius:50px;
+            border: 2px solid gray;
+        }
+
+        #box3 {
+            background:rgb{{box3}};
+            grid-area: box3;
+            border-radius:50px;
+            border: 2px solid gray;
+        }
+
+        #box4 {
+            background:rgb{{box4}};
+            grid-area: box4;
+            border-radius:50px;
+            visibility: {{visibility}};
+            border: 2px solid gray;
+        }
+
+        #box5 {
+            background:rgb{{box5}};
+            grid-area: box5;
+            border-radius:50px;
+            visibility: {{visibility}};
+            border: 2px solid gray;
+        }
+
+        #box6 {
+            background:rgb{{box6}};
+            grid-area: box6;
+            border-radius:50px;
+            visibility: {{visibility}};
+            border: 2px solid gray;
+        }
+
+
+        @media (max-width: 1000px) {
+
+            #boxArea {
+                display:grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas:
+                "box1 box2 box3"
+                "box4 box5 box6";
+                height:40vw;
+                width:60vw;
+                margin:auto;
+                margin-top:4vh;
+                margin-bottom:1vh;
+                row-gap:3%;
+                column-gap:2%;
+            }
+
+            #tools {
+                display:flex;
+                width:75%;
+                margin-left:12.5vw;
+                height:100%;
+                justify-content: space-between;
+            }
+
+            #headerAndColor {
+                width:100%;
+                height:35vh;
+                background: #2766cc;
+                padding-top:.5vh;
+                padding-bottom:1vh;
+            }
+        }
+
+        @media (max-width: 600px) {
+            input[type="text"] {
+                width: 3em
+            }
+
+            #headerAndColor {
+            width:100%;
+            height:43vh;
+            background: #2766cc;
+            padding-top:.5vh;
+            padding-bottom:1vh;
+        }
+        }
+</style>
+
+    <body>
+        <!--Welcome Text + Random Color-->
+        <div id="headerAndColor">
+            <p id="guessThis">RGB{{chosenColor}}</p>
+            <p class="welcome">Type in the box number with the above color! Click the difficulty to switch modes!</p>
+        </div>
+
+        <!--Reset + Difficulty + Response-->
+        <div id="midBar">
+            <div id="tools">
+                <form action="" method="get" class="toolDesign">
+                    <input type="text" name="guess">
+                    <input type="submit" value="Check Guess" />
+                    <span>{{rightOrWrong}}</span>
+                </form>    
+                
+                <form action="" method="get" class="toolDesign">
+                    <input type="text" name="mode" value="{{switchTo}}" style="display: none">
+                    <input type="submit" value="{{difficulty}}" class="mode">
+                </form>
+            </div>
+        </div>
+
+        <!--Boxes-->
+        <div id="boxArea">
+            <div id="box1">
+                <p>1</p>
+            </div>
+
+            <div id="box2">
+                <p>2</p>
+            </div>
+                
+            <div id="box3">
+                <p>3</p>
+            </div>
+                
+            <div id="box4">
+                <p>4</p>
+            </div >
+                
+            <div id="box5">
+                <p>5</p>
+            </div>
+
+            <div id="box6">
+                <p>6</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Score = {{score}}   -   High Score = {{highscore}} </p>
+            <p>This game is meant for a fullscreen browser.</p>
+        </footer>
+    </body>
+</html>
